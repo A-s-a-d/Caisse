@@ -103,7 +103,7 @@ int personne_ajouter(Personne p)
     return 0;
 }
 
-
+ 
 /* une meilleure solution est d'utiliser isspace()  (voir la doc de ctype.h) */
 bool est_un_espace(char c) {
     return c == ' ' || c == '\t';
