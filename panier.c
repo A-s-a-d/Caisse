@@ -5,14 +5,48 @@
 int     PANIER_PRODS_QTE[MAX_PRODUITS]  =   { 0 };
 float   PRIX_TOTAL                      =     0.0;
 bool    CLIENT_FIDELE                   =   false;
+Personne p_recherchee;
+
+
+
 
 
 bool panier_remise_client(void)
 {
-//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction. 
-    A_FAIRE();
-    return true;
+    /*
+    * je suis entrain de faire ca.
+    */
+printf("Est ce que c'est un client fidele?\n");
+printf("Ajouter le nom de client en tout en MAJUSCULE\n");
+scanf("%s %s %u", &p_recherchee.nom, &p_recherchee.pnom, &p_recherchee.tel);
+getchar(); // Consume the newline character
+for (int i = 0; p_recherchee.nom[i]; i++) {
+    p_recherchee.nom[i] = toupper(p_recherchee.nom[i]);
+  }
+  for (int i = 0; p_recherchee.pnom[i]; i++) {
+    p_recherchee.pnom[i] = toupper(p_recherchee.pnom[i]);
+  }
+printf("test : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
+
+
+for (int i = 0; i < MAX_PERSONNES; i++) {
+        if (strcmp(PERSONNES[i].nom, p_recherchee.nom) == 0 &&
+            strcmp(PERSONNES[i].pnom, p_recherchee.pnom) == 0 &&
+            PERSONNES[i].tel == p_recherchee.tel) {
+            CLIENT_FIDELE = true;
+            printf("client fidel \n");
+            return true;
+        }
+    }
+    printf("client non fidel\n");
+    return false;
+
+  //  A_FAIRE();
+   // return true;
 }
+
+
+
 
 void panier_initialiser(void)
 {
@@ -31,9 +65,26 @@ void panier_afficher(void)
      * On affiche le prix total à la fin sur une ligne à part, et on retourne à
      * la ligne.
      */
-//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction. 
-    A_FAIRE();
+
+//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction.
+    //A_FAIRE();
+
+     printf("Produit\t\tQuantite\tPrix Unitaire\tTotal\n");
+    for (int i = 0; i < NB_PRODS; i++)
+    {
+        if (PANIER_PRODS_QTE[i] > 0)
+        {
+            printf("%s\t\t%d\t\t%.2f\t\t%.2f\n",
+                   NOMS_PRODUITS[i], PANIER_PRODS_QTE[i], PRIX_PRODUITS[i],
+                   PANIER_PRODS_QTE[i] * PRIX_PRODUITS[i]);
+        }
+    }
+    printf("\nTotal du panier: %.2f\n", PRIX_TOTAL);
+/*
+j'ai fais ca
+*/
 }
+
 
 void panier_payer(void)
 {
@@ -54,7 +105,7 @@ void panier_payer(void)
         }
         printf("Total apres remise : %.2f (%.0f%% de remise)\n", prix, remise);
     }
-//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction, 
+//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction,
 //  et que vous avez vérifié que tout fonctionne comme spécifié.
     A_FAIRE();
 }
