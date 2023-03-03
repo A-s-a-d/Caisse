@@ -7,6 +7,7 @@ void mettre_en_majuscules(char ch[])
 
 void afficher_menu()
 {
+    printf("----------------------------------------------------------------------\n");
     printf("Entrez votre choix :\n"
         "[0] Quitter\n"
         "[1] Afficher la liste des produits\n"
