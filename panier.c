@@ -141,6 +141,7 @@ void panier_payer(void)
         printf("Total apres remise : %.2f (%.0f%% de remise)\n",prix,remise);
     }
         printf("Paiement effectué avec succes.\n");
+        return main();
 
 }
 
