@@ -24,6 +24,8 @@ int main(void)
 {
     int reponse = -1;
     /* lit le fichier de base de donnees des clients, et le charge en memoire */
+    printf("\n\t\t###################    DEBUT      ########################\n\n");
+
     printf("Chargement fichier clients...\n");
     ouvrir_fichier();
     personnes_remplir_liste();
