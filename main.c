@@ -7,6 +7,7 @@ void mettre_en_majuscules(char ch[])
 
 void afficher_menu()
 {
+    printf("----------------------------------------------------------------------\n");
     printf("Entrez votre choix :\n"
         "[0] Quitter\n"
         "[1] Afficher la liste des produits\n"
@@ -31,6 +32,7 @@ int main(void)
     // Menu client
     do {
         afficher_menu();
+        reponse = 7;
         reponse = lire_int();
 
         switch(reponse) {
@@ -47,6 +49,10 @@ int main(void)
         case 5: CLIENT_FIDELE = panier_remise_client();
                 break;
         case 6: panier_payer();
+                CLIENT_FIDELE = false;
+                panier_initialiser();
+                break;
+        case 7 : printf("entrer le choix");
                 break;
         default: printf("Reponse incorrecte.\n");
         }
