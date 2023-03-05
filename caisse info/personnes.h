@@ -9,6 +9,9 @@ struct personne {
     unsigned tel;       // numero de telephone
 };
 
+typedef char Ligne[50];
+Ligne Ligne_pr_chiffrement[MAX_PERSONNES];
+
 /* Maintenant on peut utiliser "Personne" a la place de "struct personne" */
 typedef struct personne Personne;
 

@@ -23,7 +23,7 @@ void crypto_choix_cle(int);
  * sortie :
  * variables globales modifiées
  */
-void crypto_chiffrer(CH50);
+void crypto_chiffrer();
 
 /*
  * crypto_dechiffrer
@@ -32,6 +32,6 @@ void crypto_chiffrer(CH50);
  * sortie :
  * variables globales modifiées
  */
-void crypto_dechiffrer(CH50);
+void crypto_dechiffrer();
 
 #endif // CHIFFREMENT_H_GUARD

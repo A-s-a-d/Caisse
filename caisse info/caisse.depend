@@ -194,10 +194,11 @@
 	<stdlib.h>
 	<string.h>
 
-1678008942 source:c:\users\asad1\desktop\caisse info\chiffrement.c
+1678026452 source:c:\users\asad1\desktop\caisse info\chiffrement.c
 	"chiffrement.h"
+	"definitions.h"
 
-1678008942 c:\users\asad1\desktop\caisse info\chiffrement.h
+1678026436 c:\users\asad1\desktop\caisse info\chiffrement.h
 	"definitions.h"
 
 1678008942 c:\users\asad1\desktop\caisse info\definitions.h
@@ -225,7 +226,7 @@
 
 1678008942 c:\users\asad1\desktop\caisse info\produits.h
 
-1678008942 c:\users\asad1\desktop\caisse info\personnes.h
+1678027507 c:\users\asad1\desktop\caisse info\personnes.h
 
 1678008942 source:c:\users\asad1\desktop\caisse info\fichiers.c
 	<stdio.h>
@@ -233,7 +234,7 @@
 	"fichiers.h"
 	"utils.h"
 
-1678013146 source:c:\users\asad1\desktop\caisse info\main.c
+1678026498 source:c:\users\asad1\desktop\caisse info\main.c
 	"definitions.h"
 
 1678012568 source:c:\users\asad1\desktop\caisse info\personnes.c
@@ -251,7 +252,7 @@
 	<stdlib.h>
 	<string.h>
 
-1678011642 source:c:\users\asad1\desktop\caisse info\panier.c
+1678022775 source:c:\users\asad1\desktop\caisse info\panier.c
 	"panier.h"
 	"personnes.h"
 	"produits.h"

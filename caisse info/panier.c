@@ -55,6 +55,8 @@ void panier_initialiser(void)
         PANIER_PRODS_QTE[i] = 0;
         PRIX_TOTAL = 0.;
     }
+    printf("----------------------------------------------------------------------\n");
+    printf("##### Program et panier ont ete reinitialisee #####\n");
 
 }
 
@@ -89,8 +91,8 @@ void panier_payer(void)
     if (!CLIENT_FIDELE)
     {
         printf("Faites-vous partie du programme fidelite ? (o/n) ");
-        char reponse = lire_char();
-        if (reponse == 'o')
+        char REPONSE = lire_char();
+        if (REPONSE == 'o')
         {
             printf("Entrez votre nom, prenom et telephone : ");
             scanf("%s %s %u", p_recherchee.nom, p_recherchee.pnom, &p_recherchee.tel);
@@ -102,7 +104,7 @@ void panier_payer(void)
             {
                 p_recherchee.pnom[i] = toupper(p_recherchee.pnom[i]);
             }
-            printf("Recherche du client fidele : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
+            printf("Recherche du client : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
             for (int i = 0; i < MAX_PERSONNES; i++)
             {
                 if (strcmp(PERSONNES[i].nom, p_recherchee.nom) == 0 &&
@@ -110,11 +112,15 @@ void panier_payer(void)
                         PERSONNES[i].tel == p_recherchee.tel)
                 {
                     CLIENT_FIDELE = true;
-                    printf("Client cherchee est fidele .\n");
+                    printf("Client cherchee est fidele.\n");
                     break;
-                }
+                } else     printf("client cherchee n'est pas fidele\n");
+                break;
+
+
             }
         }
+
     }
     if (CLIENT_FIDELE)
     {
@@ -128,8 +134,18 @@ void panier_payer(void)
                 prix *= .95;
                 remise = 5;
             }
-        printf("Total apres remise : %.2f (%.0f%% de remise)\n", prix, remise);
+        printf("Total apres remise : %.2f (%.0f%% de remise)\n",prix,remise);
     }
+
+    if (!CLIENT_FIDELE)
+    {
+        float remise = 0.0;
+        printf("----------------------------------------------------------------------\n");
+        printf("Total apres remise : %.2f (%.0f%% de remise)\n",prix,remise);
+    }
+        printf("Paiement effectue avec succes.\n");
+        return main();
+
 }
 
 

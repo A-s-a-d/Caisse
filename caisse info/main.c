@@ -24,7 +24,10 @@ int main(void)
 {
     int reponse = -1;
     /* lit le fichier de base de donnees des clients, et le charge en memoire */
+    printf("\n\t\t###################    DEBUT      ########################\n\n");
+
     printf("Chargement fichier clients...\n");
+    crypto_chiffrer();
     ouvrir_fichier();
     personnes_remplir_liste();
     fermer_fichier();
@@ -32,6 +35,7 @@ int main(void)
     // Menu client
     do {
         afficher_menu();
+        reponse = 7;
         reponse = lire_int();
 
         switch(reponse) {
@@ -50,8 +54,8 @@ int main(void)
         case 6: panier_payer();
                 CLIENT_FIDELE = false;
                 panier_initialiser();
-
-
+                break;
+        case 7 : printf("entrer le choix");
                 break;
         default: printf("Reponse incorrecte.\n");
         }
