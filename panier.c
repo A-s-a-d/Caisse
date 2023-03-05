@@ -104,7 +104,7 @@ void panier_payer(void)
             {
                 p_recherchee.pnom[i] = toupper(p_recherchee.pnom[i]);
             }
-            printf("Recherche du client fidele : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
+            printf("Recherche du client : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
             for (int i = 0; i < MAX_PERSONNES; i++)
             {
                 if (strcmp(PERSONNES[i].nom, p_recherchee.nom) == 0 &&
@@ -114,7 +114,10 @@ void panier_payer(void)
                     CLIENT_FIDELE = true;
                     printf("Client cherchee est fidele.\n");
                     break;
-                }
+                } else     printf("client cherchee n'est pas fidele\n");
+                break;
+
+
             }
         }
 
@@ -140,7 +143,7 @@ void panier_payer(void)
         printf("----------------------------------------------------------------------\n");
         printf("Total apres remise : %.2f (%.0f%% de remise)\n",prix,remise);
     }
-        printf("Paiement effectué avec succes.\n");
+        printf("Paiement effectue avec succes.\n");
         return main();
 
 }
