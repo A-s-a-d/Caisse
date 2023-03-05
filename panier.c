@@ -13,36 +13,36 @@ Personne p_recherchee;
 
 bool panier_remise_client(void)
 {
-    /*
-    * je suis entrain de faire ca.
-    */
-printf("Est ce que c'est un client fidele?\n");
-printf("Ajouter le nom de client en tout en MAJUSCULE\n");
-scanf("%s %s %u", &p_recherchee.nom, &p_recherchee.pnom, &p_recherchee.tel);
-getchar(); // Consume the newline character
-for (int i = 0; p_recherchee.nom[i]; i++) {
-    p_recherchee.nom[i] = toupper(p_recherchee.nom[i]);
-  }
-  for (int i = 0; p_recherchee.pnom[i]; i++) {
-    p_recherchee.pnom[i] = toupper(p_recherchee.pnom[i]);
-  }
-printf("test : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
+    printf("Est ce que c'est un client fidele?\n");
+    printf("Ajouter le nom de client en tout en MAJUSCULE\n");
+    scanf("%s %s %u", &p_recherchee.nom, &p_recherchee.pnom, &p_recherchee.tel);
+    getchar(); // Consume the newline character
+    for (int i = 0; p_recherchee.nom[i]; i++)
+    {
+        p_recherchee.nom[i] = toupper(p_recherchee.nom[i]);
+    }
+    for (int i = 0; p_recherchee.pnom[i]; i++)
+    {
+        p_recherchee.pnom[i] = toupper(p_recherchee.pnom[i]);
+    }
+    printf("test : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
 
 
-for (int i = 0; i < MAX_PERSONNES; i++) {
+
+    printf("Recherche du client fidele : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
+    for (int i = 0; i < MAX_PERSONNES; i++)
+    {
         if (strcmp(PERSONNES[i].nom, p_recherchee.nom) == 0 &&
-            strcmp(PERSONNES[i].pnom, p_recherchee.pnom) == 0 &&
-            PERSONNES[i].tel == p_recherchee.tel) {
+                strcmp(PERSONNES[i].pnom, p_recherchee.pnom) == 0 &&
+                PERSONNES[i].tel == p_recherchee.tel)
+        {
             CLIENT_FIDELE = true;
-            printf("client fidel \n");
+            printf("Client cherchee est fidele .\n");
             return true;
         }
     }
-    printf("client non fidel\n");
+    printf("client cherchee n'est pas fidele\n");
     return false;
-
-  //  A_FAIRE();
-   // return true;
 }
 
 
@@ -51,24 +51,19 @@ for (int i = 0; i < MAX_PERSONNES; i++) {
 void panier_initialiser(void)
 {
     for (int i = 0; i < MAX_PRODUITS; ++i)
+    {
         PANIER_PRODS_QTE[i] = 0;
-    PRIX_TOTAL = 0.;
+        PRIX_TOTAL = 0.;
+    }
+    printf("----------------------------------------------------------------------\n");
+    printf("##### Program et panier ont ete reinitialisee #####\n");
+
 }
 
 void panier_afficher(void)
 {
-    /* TODO
-     * Lit la quantite de chaque produit dans le tableau des quantites. Si la
-     * quantite d'un produit est positive, alors on affiche le produit, sa
-     * quantite, et le prix total par produit.
-     * On affiche un produit/quantite/total par ligne.
-     * On affiche le prix total à la fin sur une ligne à part, et on retourne à
-     * la ligne.
-     */
 
-//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction.
-    //A_FAIRE();
-
+    printf("----------------------------------------------------------------------\n");
      printf("Produit\t\tQuantite\tPrix Unitaire\tTotal\n");
     for (int i = 0; i < NB_PRODS; i++)
     {
@@ -80,33 +75,74 @@ void panier_afficher(void)
         }
     }
     printf("\nTotal du panier: %.2f\n", PRIX_TOTAL);
+    printf("----------------------------------------------------------------------\n");
 /*
 j'ai fais ca
 */
 }
 
 
+
 void panier_payer(void)
 {
     float prix = PRIX_TOTAL;
     panier_afficher();
-    if (! CLIENT_FIDELE) {
+
+    if (!CLIENT_FIDELE)
+    {
         printf("Faites-vous partie du programme fidelite ? (o/n) ");
-        char reponse = lire_char();
+        char REPONSE = lire_char();
+        if (REPONSE == 'o')
+        {
+            printf("Entrez votre nom, prenom et telephone : ");
+            scanf("%s %s %u", p_recherchee.nom, p_recherchee.pnom, &p_recherchee.tel);
+            for (int i = 0; p_recherchee.nom[i]; i++)
+            {
+                p_recherchee.nom[i] = toupper(p_recherchee.nom[i]);
+            }
+            for (int i = 0; p_recherchee.pnom[i]; i++)
+            {
+                p_recherchee.pnom[i] = toupper(p_recherchee.pnom[i]);
+            }
+            printf("Recherche du client fidele : %s %s %u\n", p_recherchee.nom, p_recherchee.pnom, p_recherchee.tel);
+            for (int i = 0; i < MAX_PERSONNES; i++)
+            {
+                if (strcmp(PERSONNES[i].nom, p_recherchee.nom) == 0 &&
+                        strcmp(PERSONNES[i].pnom, p_recherchee.pnom) == 0 &&
+                        PERSONNES[i].tel == p_recherchee.tel)
+                {
+                    CLIENT_FIDELE = true;
+                    printf("Client cherchee est fidele.\n");
+                    break;
+                }
+            }
+        }
+
     }
-    if (CLIENT_FIDELE) {
+    if (CLIENT_FIDELE)
+    {
         float remise = 0.0;
-        if        (prix >= 100) {
+        if        (prix >= 80)
+        {
             prix *= .90;
             remise = 10;
-        } else if (prix >= 15)  {
-            prix *= .95;
-            remise = 5;
-        }
-        printf("Total apres remise : %.2f (%.0f%% de remise)\n", prix, remise);
+        } else if (prix >= 15)
+            {
+                prix *= .95;
+                remise = 5;
+            }
+        printf("Total apres remise : %.2f (%.0f%% de remise)\n",prix,remise);
     }
-//  retirer cette ligne une fois que vous avez commencé à écrire le code de cette fonction,
-//  et que vous avez vérifié que tout fonctionne comme spécifié.
-    A_FAIRE();
+
+    if (!CLIENT_FIDELE)
+    {
+        float remise = 0.0;
+        printf("----------------------------------------------------------------------\n");
+        printf("Total apres remise : %.2f (%.0f%% de remise)\n",prix,remise);
+    }
+        printf("Paiement effectué avec succes.\n");
+
 }
+
+
 
